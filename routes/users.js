@@ -53,7 +53,7 @@ router.route('/update/:id').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
    try {
      const user = await User.findOne({ username: req.body.username });
      console.log(user);
