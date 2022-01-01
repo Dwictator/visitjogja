@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const bodyParser = require("body-parser");
 
 let User = require('../models/user.model');
@@ -30,6 +31,7 @@ router.route('/add').post((req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+   try {
      const user = await User.findOne({ username: req.body.username });
      console.log(user);
      if (user) {
@@ -43,6 +45,10 @@ router.post("/login", async (req, res) => {
      } else {
        res.send("Fill the username or password.");
      }
+   } catch (error) {
+     console.log(error);
+     res.status(500).send("Internal Server error Occured");
+   }
  });
 
 router.route('/:id').get((req, res) => {
