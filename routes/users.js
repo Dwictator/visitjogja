@@ -37,8 +37,7 @@ router.post("/login", async (req, res) => {
      if (user) {
        const cmp = await bcrypt.compare(req.body.password, user.password);
        if (cmp) {
-         User.findById(req.body.username)
-         .then(res.json(User))
+         .then(res.json(user))
        } else {
          res.status(400).json('Login Failed. Check Username or Password');
        }
