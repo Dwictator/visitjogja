@@ -37,8 +37,8 @@ router.post("/login", async (req, res) => {
      if (user) {
        const cmp = await bcrypt.compare(req.body.password, user.password);
        if (cmp) {
-         //   ..... further code to maintain authentication like jwt or sessions
-         res.status(200).json(User);
+         User.findById(req.body.username)
+         .then(User => res.json(User))
        } else {
          res.status(400).json('Login Failed. Check Username or Password');
        }
