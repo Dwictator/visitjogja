@@ -38,16 +38,16 @@ router.post("/login", async (req, res) => {
        const cmp = await bcrypt.compare(req.body.password, user.password);
        if (cmp) {
          //   ..... further code to maintain authentication like jwt or sessions
-         res.status(200).json('Login Success'));
+         res.status(200).json('Login Success');
        } else {
-         res.status(400).json('Login Failed'));
+         res.status(400).json('Login Failed');
        }
      } else {
        res.send("Fill the username or password.");
      }
    } catch (error) {
      console.log(error);
-     res.status(500).send("Internal Server error Occured");
+     res.status(500).json("Internal Server error Occured");
    }
  });
 
