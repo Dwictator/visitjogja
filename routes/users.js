@@ -40,8 +40,7 @@ router.post("/login", async (req, res) => {
          //   ..... further code to maintain authentication like jwt or sessions
          res.status(200).json('Login Success');
        } else {
-         console.log()
-         res.status(400);
+         res.status(400).json(0);
        }
      } else {
        res.send("Fill the username or password.");
