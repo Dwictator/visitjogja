@@ -70,7 +70,7 @@ router.route('/update/:id').post((req, res) => {
          User.password = req.body.password;
 
          User.save() 
-            .then(() => res.json('User updated'))
+            .then(() => res.status(200).json('User updated'))
             .catch(err => res.status(400).json('Error: ' + err));
       })
       .catch(err => res.status(400).json('Error: ' + err));
