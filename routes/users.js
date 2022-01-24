@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
          res.status(400).json({status:"err"});
        }
      } else {
-       res.send("Fill the username or password.");
+       res.status(400).json({status:"err"});
      }
    } catch (error) {
      console.log(error);
