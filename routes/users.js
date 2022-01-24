@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
        if (cmp) {
          res.status(200).json(user);
        } else {
-         res.status(400).json('Login Failed. Check Username or Password');
+         res.status(400);
        }
      } else {
        res.send("Fill the username or password.");
