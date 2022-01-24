@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
        if (cmp) {
          res.status(200).json(user);
        } else {
-         res.status(400);
+         res.status(400).json({status:"err"});
        }
      } else {
        res.send("Fill the username or password.");
@@ -70,7 +70,7 @@ router.route('/update/:id').post((req, res) => {
          User.password = req.body.password;
 
          User.save() 
-            .then(() => res.status(200))
+            .then(() => res.status(200).json({status:"ok"}))
             .catch(err => res.status(400).json('Error: ' + err));
       })
       .catch(err => res.status(400).json('Error: ' + err));
